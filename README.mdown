@@ -9,7 +9,7 @@ Generate url strings and HTML img tags for QR codes. Heavily inspired by the goo
 
 ## Usage
 
-    var googleQR = new GoogleQR("http://www.engauge.com", "100x100", true);
+    var googleQR = new GoogleQR("SomeDataToQRify", "100x100", true);
 
     var qrText = googleQR.ToString();
     #=> "https://chart.googleapis.com/chart?cht=qr&chl=SomeDataToQRify&chs=100x100"
