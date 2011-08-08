@@ -6,6 +6,7 @@ Generate url strings and HTML img tags for QR codes. Heavily inspired by the goo
 ## Install
 
    nuget
+   PM> Install-Package GoogleQRGenerator
 
 ## Usage
 
