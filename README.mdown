@@ -9,12 +9,12 @@ Generate url strings and HTML img tags for QR codes. Heavily inspired by the goo
 
 ## Usage
 
-    var chart = new GoogleQR("SomeDataToQRify", "100x100");
+    var googleQR = new GoogleQR("http://www.engauge.com", "100x100", true);
 
-    chart.ToString();
+    var qrText = googleQR.ToString();
     #=> "https://chart.googleapis.com/chart?cht=qr&chl=SomeDataToQRify&chs=100x100"
 
-    chart.Render();
+    var qrImage = googleQR.Render();
     #=> "<img src='https://chart.googleapis.com/chart?cht=qr&chl=SomeDataToQRify&chs=100x100' width='100' height='100'/>"
     
 ## Testing
