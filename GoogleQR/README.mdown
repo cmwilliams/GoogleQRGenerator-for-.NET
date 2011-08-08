@@ -1,0 +1,22 @@
+﻿# Google Charts QR Code wrapper for .NET
+
+Generate url strings and HTML img tags for QR codes. Heavily inspired by the google-gr ruby gem.
+
+
+## Install
+
+   nuget
+
+## Usage
+
+    var chart = new GoogleQR("SomeDataToQRify", "100x100");
+
+    chart.ToString();
+    #=> "https://chart.googleapis.com/chart?cht=qr&chl=SomeDataToQRify&chs=100x100"
+
+    chart.Render();
+    #=> "<img src='https://chart.googleapis.com/chart?cht=qr&chl=SomeDataToQRify&chs=100x100' width='100' height='100'/>"
+    
+## Testing
+
+Complete test class included.
