@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GoogleQRGenerator
 {
-    public class GoogleQR
+    public class GoogleQr
     {
         public string Data { get; set; }
         public string Size { get; set; }
@@ -13,11 +13,11 @@ namespace GoogleQRGenerator
         public string Encoding { get; set; }
         public string ErrorCorrection { get; set; }
 
-        public GoogleQR(string data = "http://www.google.com", string size = "100x100", bool useHttps = true)
+        public GoogleQr(string data, string size, bool useHttp)
         {
-            Data = data;
-            Size = size;
-            UseHttps = useHttps;
+            Data = !string.IsNullOrEmpty(data) ? data : "http://www.google.com";
+            Size = !string.IsNullOrEmpty(size) ? size : "100x100";
+            UseHttps = useHttp;
         }
 
         private string BaseUrl()
@@ -31,10 +31,9 @@ namespace GoogleQRGenerator
 
             if(!string.IsNullOrEmpty(Size))
             {
-                string[] sizes = Size.Split(new[] {'x'});
-                string height, width;
-                height = sizes[0];
-                width = sizes[1];
+                var sizes = Size.Split(new[] {'x'});
+                var height = sizes[0];
+                string width = sizes[1];
                 dimensions = " height='" + height + "' width='" + width + "'";
             }
 
@@ -53,7 +52,7 @@ namespace GoogleQRGenerator
                 if (!string.IsNullOrEmpty(ErrorCorrection))
                     parameters.Add("chld=" + ErrorCorrection);
 
-                return BaseUrl() + string.Join("&", parameters);
+                return BaseUrl() + string.Join("&", parameters.ToArray());
             }
             throw new Exception("Data is required");
         }

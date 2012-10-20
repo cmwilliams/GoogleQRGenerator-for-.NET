@@ -1,25 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using GoogleQRGenerator;
 
 namespace Specs
 {
     [TestFixture]
-    class QRSpec
+    class QrSpec
     {
-        private GoogleQR _qrCode;
+        private GoogleQr _qrCode;
 
         [SetUp]
         public void Init()
         {
-            _qrCode = new GoogleQR();
+            const string data = "http://wwww.google.com";
+            const string size = "100x100";
+            _qrCode = new GoogleQr(data, size, true);
         }
 
         [Test]
-        private void ShouldRaiseErrorWithoutData()
+        public void ShouldRaiseErrorWithoutData()
         {
             _qrCode.Data = null;
             var ex = Assert.Throws<Exception>(() => _qrCode.ToString());
